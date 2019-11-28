@@ -1,21 +1,11 @@
 #include <bits/stdc++.h>
-
 using namespace std; 
-
 enum COLOR { RED, BLACK }; 
-
 class Node { 
 public: 
 int val; 
 COLOR color; 
 Node *left, *right, *parent; 
-
-Node(int val, string colorcito) : val(val) { 
-	parent = left = right = NULL; 
-  if(colorcito == "RED") color = RED;
-  else color = BLACK;
-} 
-
 Node *uncle() { 
 	if (parent == NULL or parent->parent == NULL) 
 	return NULL; 
@@ -45,6 +35,18 @@ void moveDown(Node *nParent) {
 	} 
 	nParent->parent = parent; 
 	parent = nParent; 
+} 
+
+Node(int value, string color) : val(value) { 
+	parent = NULL;
+	left = NULL;
+	right = NULL; 
+  if(color == "BLACK"){
+      color = BLACK;
+  }
+  else{
+    color = RED;  
+  } 
 } 
 
 bool hasRedChild() { 
@@ -333,7 +335,7 @@ void deleteByVal(int n) {
 
 
 void printpreOrder() { 
-	cout << "preOrder: " << endl; 
+	cout << "Arbol: " << endl; 
 	if (root == NULL) 
 	cout << "Tree is empty" << endl; 
 	else
