@@ -137,13 +137,8 @@ class RedBlack{
             root->color = BLACK;
         }
 
-        void insertAndFix(string value){
-          string numero = value.substr(0, value.size()-1);
-          string color = value.substr(value.size()-1);
-          stringstream aux(numero); 
-          int x = 0; 
-          aux >> x; 
-          Node *v = createNode(x, color);
+        void insertAndFix(int value, string color){
+          Node *v = createNode(value, color);
           root = insert(root, v);
           fix(root, v);
         }
@@ -165,10 +160,20 @@ class RedBlack{
 
 int main() {
     RedBlack tree{};
-    tree.insertAndFix("50B");
-    tree.insertAndFix("30B");
-    tree.insertAndFix("40R");
-    tree.insertAndFix("10R");
+    tree.insertAndFix(50,"B");
+    tree.insertAndFix(30,"B");
+    tree.insertAndFix(40,"R");
+    tree.insertAndFix(10,"R");
+    tree.insertAndFix(35,"R");
+    tree.insertAndFix(45,"B");
+    tree.insertAndFix(43,"R");
+    tree.insertAndFix(48,"R");
+    tree.insertAndFix(70,"R");
+    tree.insertAndFix(60,"B");
+    tree.insertAndFix(55,"R");
+    tree.insertAndFix(80,"B");
+    tree.insertAndFix(75,"R");
+    tree.insertAndFix(100,"R");
     tree.inorder();
 
 }
